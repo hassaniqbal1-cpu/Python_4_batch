@@ -1,0 +1,19 @@
+take any string
+and print
+all values one by one
+
+
+_______________________________
+
+a = 12
+convert this into string, float
+
+a = "1200"
+convert this into integer, float
+
+a = 1454000.23
+convert this into integer, string
+
+
+____________________________________
+Code challenge
