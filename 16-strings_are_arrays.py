@@ -1,3 +1,3 @@
 a = "Pakistan"
-value = a[2]
+value = a[-3]
 print(value)

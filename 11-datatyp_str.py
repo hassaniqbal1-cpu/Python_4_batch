@@ -20,6 +20,6 @@ type_of_zz  = type(zz)
 print(type_of_zz)
 
 
-yy = pakistan
-type_of_yy = type(yy)
-print(type_of_yy)
+#yy = pakistan
+#type_of_yy = type(yy)
+#print(type_of_yy)
