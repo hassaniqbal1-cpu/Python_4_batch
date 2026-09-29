@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #222;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            width: 330px;
+            padding: 20px;
+            background: #111;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .display {
+            width: 100%;
+            height: 80px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            text-align: right;
+            font-size: 35px;
+            outline: none;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 60px;
+            border: none;
+            border-radius: 12px;
+            font-size: 22px;
+            cursor: pointer;
+            background: #333;
+            color: white;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .operator {
+            background: #ff9500;
+        }
+
+        .operator:hover {
+            background: #ffaa22;
+        }
+
+        .clear {
+            background: #a5a5a5;
+            color: black;
+        }
+
+        .equal {
+            background: #2196f3;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="calculator">
+
+    <input type="text" id="display" class="display" value="0" readonly>
+
+    <div class="buttons">
+
+        <button class="clear" onclick="clearDisplay()">AC</button>
+        <button onclick="deleteNumber()">DEL</button>
+        <button class="operator" onclick="setOperator('%')">%</button>
+        <button class="operator" onclick="setOperator('/')">÷</button>
+
+        <button onclick="addNumber('7')">7</button>
+        <button onclick="addNumber('8')">8</button>
+        <button onclick="addNumber('9')">9</button>
+        <button class="operator" onclick="setOperator('*')">×</button>
+
+        <button onclick="addNumber('4')">4</button>
+        <button onclick="addNumber('5')">5</button>
+        <button onclick="addNumber('6')">6</button>
+        <button class="operator" onclick="setOperator('-')">−</button>
+
+        <button onclick="addNumber('1')">1</button>
+        <button onclick="addNumber('2')">2</button>
+        <button onclick="addNumber('3')">3</button>
+        <button class="operator" onclick="setOperator('+')">+</button>
+
+        <button class="zero" onclick="addNumber('0')">0</button>
+        <button onclick="addNumber('.')">.</button>
+        <button class="equal" onclick="calculate()">=</button>
+
+    </div>
+</div>
+
+
+<script>
+
+    let firstNumber = "";
+    let operator = "";
+    let secondNumber = "";
+
+    function addNumber(number) {
+
+        if (operator == "") {
+
+            firstNumber = firstNumber + number;
+            document.getElementById("display").value = firstNumber;
+
+        }
+
+        if (operator != "") {
+
+            secondNumber = secondNumber + number;
+            document.getElementById("display").value = secondNumber;
+
+        }
+    }
+
+
+    function setOperator(op) {
+
+        if (firstNumber != "") {
+
+            operator = op;
+            document.getElementById("display").value = op;
+
+        }
+    }
+
+
+    function calculate() {
+
+        let result = 0;
+
+        if (operator == "+") {
+            result = Number(firstNumber) + Number(secondNumber);
+        }
+
+        if (operator == "-") {
+            result = Number(firstNumber) - Number(secondNumber);
+        }
+
+        if (operator == "*") {
+            result = Number(firstNumber) * Number(secondNumber);
+        }
+
+        if (operator == "/") {
+
+            if (Number(secondNumber) != 0) {
+                result = Number(firstNumber) / Number(secondNumber);
+            }
+
+            if (Number(secondNumber) == 0) {
+                document.getElementById("display").value = "Error";
+                return;
+            }
+        }
+
+        if (operator == "%") {
+            result = Number(firstNumber) % Number(secondNumber);
+        }
+
+        document.getElementById("display").value = result;
+
+        firstNumber = result.toString();
+        secondNumber = "";
+        operator = "";
+    }
+
+
+    function clearDisplay() {
+
+        firstNumber = "";
+        secondNumber = "";
+        operator = "";
+
+        document.getElementById("display").value = "0";
+    }
+
+
+    function deleteNumber() {
+
+        if (operator == "") {
+
+            firstNumber = firstNumber.slice(0, -1);
+            document.getElementById("display").value = firstNumber;
+
+        }
+
+        if (operator != "") {
+
+            secondNumber = secondNumber.slice(0, -1);
+            document.getElementById("display").value = secondNumber;
+
+        }
+    }
+
+</script>
+
+</body>
+</html>
