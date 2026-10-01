@@ -1,0 +1,1015 @@
+String Exercises
+String Code Chellange
+Assignmen is given below
+
+______________________________________________________
+
+# Python Programming Assignment
+
+## Industrial Text Processing System Using Python Strings
+
+### Assignment Title
+
+**Build an Industrial Text Processing and Data Cleaning System**
+
+### Difficulty
+
+Intermediate → Industry Level
+
+### Technologies
+
+* Python 3.x
+* Python Strings
+* String Methods
+* Conditional Statements
+* Loops
+* Functions
+* Basic Exception Handling
+
+---
+
+## 1. Business Scenario
+
+You have been hired as a **Junior Python Developer** for a company that receives customer information from different systems.
+
+The incoming data is often inconsistent:
+
+* Extra spaces
+* Different capitalization
+* Invalid email formats
+* Inconsistent phone numbers
+* Incorrect product codes
+* Unnecessary special characters
+* Mixed formatting
+* Duplicate-looking customer records
+
+Your task is to develop a **Text Processing and Data Validation System** using Python.
+
+The system must clean, validate, format, and generate reports from customer information.
+
+---
+
+# 2. Learning Objectives
+
+After completing this assignment, students should be able to:
+
+1. Create and manipulate strings.
+2. Use indexing and slicing.
+3. Use common Python string methods.
+4. Search for text inside strings.
+5. Clean unstructured text.
+6. Validate text-based input.
+7. Extract information from strings.
+8. Format strings professionally.
+9. Build reusable string-processing functions.
+10. Apply string processing to an industrial-style problem.
+
+---
+
+# 3. Input Data
+
+Use the following raw customer records:
+
+```python
+customers = [
+    "  john smith | JOHN.SMITH@GMAIL.COM | +92-300-1234567 | PK-LHR-001  ",
+    "sarah khan| sarah.khan@gmail.com | 0300 7654321 | PK-ISB-002",
+    "  ALI RAZA | ali.raza@gmail.com|+92 321 9876543|PK-KHI-003 ",
+    "maria joseph | MARIA.JOSEPH@OUTLOOK.COM | 051-2223344 | PK-RWP-004",
+    "  david lee | david.lee@gmail | +92-333-1112223 | PK-LHR-005 ",
+    "fatima noor | fatima.noor@yahoo.com | 0321-4445555 | PK-ISB-006",
+]
+```
+
+Each record follows this general structure:
+
+```text
+Name | Email | Phone | Customer Code
+```
+
+---
+
+# 4. Task 1 — Basic String Analysis
+
+For every customer record:
+
+### Requirements
+
+Display:
+
+* Original record
+* Number of characters
+* Number of words
+* Number of spaces
+* Number of `|` separators
+* First 10 characters
+* Last 10 characters
+
+### Example
+
+```text
+Original:
+  john smith | JOHN.SMITH@GMAIL.COM | +92-300-1234567 | PK-LHR-001
+
+Characters: ...
+Words: ...
+Spaces: ...
+Separators: ...
+First 10 characters: ...
+Last 10 characters: ...
+```
+
+### Restrictions
+
+Do not use external libraries.
+
+Use Python string operations and methods.
+
+---
+
+# 5. Task 2 — Clean Customer Records
+
+Create a function:
+
+```python
+def clean_record(record):
+    pass
+```
+
+The function must:
+
+1. Remove unnecessary spaces.
+2. Remove spaces around `|`.
+3. Convert customer names into proper case.
+4. Convert emails to lowercase.
+5. Remove unnecessary spaces from phone numbers.
+6. Convert the customer code to uppercase.
+
+### Expected Format
+
+```text
+John Smith | john.smith@gmail.com | +92-300-1234567 | PK-LHR-001
+```
+
+---
+
+# 6. Task 3 — Extract Customer Information
+
+Create:
+
+```python
+def parse_customer(record):
+    pass
+```
+
+The function should extract:
+
+```text
+Name
+Email
+Phone
+Customer Code
+```
+
+Return the information as a Python dictionary.
+
+### Expected Output
+
+```python
+{
+    "name": "John Smith",
+    "email": "john.smith@gmail.com",
+    "phone": "+92-300-1234567",
+    "customer_code": "PK-LHR-001"
+}
+```
+
+---
+
+# 7. Task 4 — Email Validation
+
+Create:
+
+```python
+def validate_email(email):
+    pass
+```
+
+The function should determine whether an email is valid according to these basic business rules:
+
+### Valid Email
+
+Must:
+
+* Contain exactly one `@`
+* Contain a `.`
+* Have text before `@`
+* Have text between `@` and `.`
+* Have text after the final `.`
+
+### Examples
+
+```text
+john.smith@gmail.com       VALID
+sarah.khan@gmail.com       VALID
+david.lee@gmail            INVALID
+abc.com                    INVALID
+@test.com                  INVALID
+user@.com                  INVALID
+```
+
+Return:
+
+```python
+True
+```
+
+or
+
+```python
+False
+```
+
+---
+
+# 8. Task 5 — Phone Number Cleaning and Validation
+
+Create:
+
+```python
+def clean_phone(phone):
+    pass
+```
+
+The function should remove formatting characters such as:
+
+```text
+-
+space
+(
+)
+```
+
+For example:
+
+```text
++92-300-1234567
+```
+
+should become:
+
+```text
++923001234567
+```
+
+And:
+
+```text
+0300 7654321
+```
+
+should become:
+
+```text
+03007654321
+```
+
+Then create:
+
+```python
+def validate_phone(phone):
+    pass
+```
+
+The function should check whether the cleaned phone number follows your defined business rules.
+
+Document your validation rules in comments.
+
+---
+
+# 9. Task 6 — Customer Code Validation
+
+Customer codes follow this format:
+
+```text
+PK-CITY-NUMBER
+```
+
+Example:
+
+```text
+PK-LHR-001
+PK-ISB-002
+PK-KHI-003
+```
+
+Create:
+
+```python
+def validate_customer_code(code):
+    pass
+```
+
+Your function should verify:
+
+* Correct number of sections
+* Correct separator
+* Country code is `PK`
+* City code contains 3 characters
+* Numeric ID contains 3 digits
+
+### Valid
+
+```text
+PK-LHR-001
+PK-ISB-002
+```
+
+### Invalid
+
+```text
+PK-LAH-001
+US-LHR-001
+PK-LHR-1
+PK_LHR_001
+```
+
+---
+
+# 10. Task 7 — Extract City
+
+Create:
+
+```python
+def extract_city(customer_code):
+    pass
+```
+
+For:
+
+```text
+PK-LHR-001
+```
+
+Return:
+
+```text
+LHR
+```
+
+For:
+
+```text
+PK-ISB-002
+```
+
+Return:
+
+```text
+ISB
+```
+
+---
+
+# 11. Task 8 — Generate Customer Username
+
+Create:
+
+```python
+def generate_username(name):
+    pass
+```
+
+The username should be generated from the customer's name.
+
+For example:
+
+```text
+John Smith
+```
+
+could become:
+
+```text
+john.smith
+```
+
+Rules:
+
+* Convert to lowercase.
+* Remove unnecessary spaces.
+* Replace spaces with `.`
+* Remove unwanted special characters.
+
+---
+
+# 12. Task 9 — Customer Search System
+
+Create a search function:
+
+```python
+def search_customer(customers, keyword):
+    pass
+```
+
+The user should be able to search using:
+
+* Customer name
+* Email
+* Phone
+* Customer code
+* City
+
+The search should be **case-insensitive**.
+
+### Example
+
+```text
+Search: lahore
+```
+
+The system should find customers associated with:
+
+```text
+LHR
+```
+
+You must explain how your search works.
+
+---
+
+# 13. Task 10 — Duplicate Detection
+
+Create:
+
+```python
+def find_duplicates(customers):
+    pass
+```
+
+The system should detect duplicate customers based on email address.
+
+For example:
+
+```text
+John Smith | john@gmail.com
+John Smith | JOHN.GMAIL.COM
+```
+
+should be considered the same email after normalization.
+
+Display:
+
+```text
+Duplicate customer found:
+john@gmail.com
+```
+
+---
+
+# 14. Task 11 — Customer Data Validation Report
+
+Create a complete validation report.
+
+For every customer display:
+
+```text
+========================================
+CUSTOMER VALIDATION REPORT
+========================================
+
+Name:
+Email:
+Phone:
+Customer Code:
+
+Email Status:
+Phone Status:
+Customer Code Status:
+
+Overall Status:
+========================================
+```
+
+The overall status should be:
+
+```text
+VALID
+```
+
+if all fields are valid.
+
+Otherwise:
+
+```text
+INVALID
+```
+
+---
+
+# 15. Task 12 — Text Statistics
+
+Create a function:
+
+```python
+def text_statistics(text):
+    pass
+```
+
+It should calculate:
+
+* Total characters
+* Characters excluding spaces
+* Number of words
+* Number of uppercase characters
+* Number of lowercase characters
+* Number of digits
+* Number of special characters
+* Number of spaces
+
+### Example
+
+For:
+
+```text
+Python AI 2026!
+```
+
+the system should calculate statistics for the text.
+
+---
+
+# 16. Task 13 — Sensitive Data Masking
+
+Companies often mask sensitive information before displaying it.
+
+Create:
+
+```python
+def mask_email(email):
+    pass
+```
+
+Example:
+
+```text
+john.smith@gmail.com
+```
+
+could become:
+
+```text
+j***@gmail.com
+```
+
+Create:
+
+```python
+def mask_phone(phone):
+    pass
+```
+
+Example:
+
+```text
++923001234567
+```
+
+could become:
+
+```text
++923******567
+```
+
+The exact masking strategy should be documented.
+
+---
+
+# 17. Task 14 — Generate Customer ID
+
+Create:
+
+```python
+def generate_customer_id(name, city, number):
+    pass
+```
+
+The generated ID should follow:
+
+```text
+CUSTOMER-CITY-NUMBER
+```
+
+Example:
+
+```text
+CUSTOMER-LHR-001
+```
+
+Use string formatting rather than manually concatenating every part.
+
+---
+
+# 18. Task 15 — Build the Complete Application
+
+Combine all previous functions into one application.
+
+The application should display a menu:
+
+```text
+========================================
+ CUSTOMER TEXT PROCESSING SYSTEM
+========================================
+
+1. Display Customers
+2. Clean Customer Data
+3. Validate Customer Data
+4. Search Customer
+5. Generate Username
+6. Text Statistics
+7. Mask Sensitive Data
+8. Generate Customer Report
+9. Exit
+
+Enter your choice:
+```
+
+The program should continue running until the user selects:
+
+```text
+9. Exit
+```
+
+---
+
+# 19. Programming Requirements
+
+Your solution must:
+
+### Required
+
+* Use functions.
+* Use meaningful variable names.
+* Use string methods.
+* Use loops.
+* Use conditional statements.
+* Use dictionaries where appropriate.
+* Use lists where appropriate.
+* Include comments for important logic.
+* Handle invalid user input.
+* Keep functions small and focused.
+
+### Recommended String Methods
+
+Students should investigate and use appropriate methods such as:
+
+```python
+.upper()
+.lower()
+.title()
+.strip()
+.replace()
+.split()
+.join()
+.find()
+.index()
+.count()
+.startswith()
+.endswith()
+.isalpha()
+.isdigit()
+.isalnum()
+.isspace()
+```
+
+Students should not blindly use every method. They should select the appropriate method for each problem.
+
+---
+
+# 20. Important Restriction
+
+For this assignment, students should **not use regular expressions (`re`)**.
+
+The purpose is to develop strong understanding of Python string operations before introducing regular expressions.
+
+Do not use:
+
+```python
+import re
+```
+
+---
+
+# 21. Code Quality Requirements
+
+Your code should follow this structure:
+
+```python
+# ==========================================
+# CONFIGURATION
+# ==========================================
+
+
+# ==========================================
+# STRING CLEANING FUNCTIONS
+# ==========================================
+
+
+# ==========================================
+# VALIDATION FUNCTIONS
+# ==========================================
+
+
+# ==========================================
+# SEARCH FUNCTIONS
+# ==========================================
+
+
+# ==========================================
+# REPORT FUNCTIONS
+# ==========================================
+
+
+# ==========================================
+# MAIN APPLICATION
+# ==========================================
+```
+
+Every function must have a clear purpose.
+
+Example:
+
+```python
+def clean_email(email):
+    """
+    Clean and normalize an email address.
+    """
+    pass
+```
+
+---
+
+# 22. Error Handling
+
+The application should not crash because the user enters invalid data.
+
+For example:
+
+```text
+Enter your choice: abc
+```
+
+should produce:
+
+```text
+Invalid input. Please enter a number from 1 to 9.
+```
+
+The program should continue running.
+
+---
+
+# 23. Expected Final Workflow
+
+Your completed system should perform the following workflow:
+
+```text
+Raw Data
+   ↓
+Clean Data
+   ↓
+Parse Data
+   ↓
+Validate Data
+   ↓
+Search / Process
+   ↓
+Mask Sensitive Information
+   ↓
+Generate Report
+```
+
+---
+
+# 24. Deliverables
+
+Students must submit:
+
+### 1. Python Source Code
+
+File:
+
+```text
+customer_text_processing.py
+```
+
+### 2. README File
+
+File:
+
+```text
+README.md
+```
+
+The README must contain:
+
+* Project title
+* Project description
+* Features
+* How to run the program
+* Sample input
+* Sample output
+* Validation rules
+* Challenges faced
+* What you learned
+
+### 3. Output Screenshots
+
+Submit screenshots showing:
+
+* Cleaned customer records
+* Validation results
+* Search functionality
+* Text statistics
+* Masked information
+* Final customer report
+
+---
+
+# 25. Bonus Tasks
+
+Students who want additional challenge can implement:
+
+### Bonus 1 — Log File Processing
+
+Create a log file:
+
+```text
+server.log
+```
+
+Example:
+
+```text
+2026-09-30 10:21:32 INFO User login successful
+2026-09-30 10:22:10 ERROR Database connection failed
+2026-09-30 10:25:44 WARNING Disk space is low
+```
+
+Use string processing to extract:
+
+* Date
+* Time
+* Log level
+* Message
+
+---
+
+### Bonus 2 — IP Address Validation
+
+Create:
+
+```python
+def validate_ip(ip):
+    pass
+```
+
+Examples:
+
+```text
+192.168.1.10     VALID
+10.0.0.1         VALID
+999.10.20.1      INVALID
+192.168.1        INVALID
+```
+
+Do this without using the `ipaddress` module.
+
+---
+
+### Bonus 3 — Password Strength Analyzer
+
+Create:
+
+```python
+def password_strength(password):
+    pass
+```
+
+Check whether the password contains:
+
+* Uppercase letters
+* Lowercase letters
+* Numbers
+* Special characters
+* Minimum length
+
+Return:
+
+```text
+WEAK
+MEDIUM
+STRONG
+```
+
+Document your own strength criteria.
+
+---
+
+### Bonus 4 — CSV-Style Data Parser
+
+Process records such as:
+
+```text
+101,John Smith,john@gmail.com,LHR
+102,Sarah Khan,sarah@gmail.com,ISB
+103,Ali Raza,ali@gmail.com,KHI
+```
+
+Extract each field using Python string operations.
+
+---
+
+# 26. Evaluation Rubric
+
+| Category                   |   Marks |
+| -------------------------- | ------: |
+| Basic String Operations    |      10 |
+| String Cleaning            |      10 |
+| Data Extraction            |      10 |
+| Email Validation           |      10 |
+| Phone Validation           |      10 |
+| Customer Code Validation   |      10 |
+| Search System              |      10 |
+| Reporting                  |      10 |
+| Code Structure & Functions |      10 |
+| Error Handling             |       5 |
+| Documentation              |       5 |
+| **Total**                  | **100** |
+
+### Bonus
+
+```text
+Bonus: +15 marks
+```
+
+---
+
+# 27. Industry-Level Expectations
+
+This is not only a syntax exercise.
+
+Students should think like a **Python developer working with real business data**.
+
+The focus should be:
+
+```text
+Raw Data
+    ↓
+Data Cleaning
+    ↓
+Data Validation
+    ↓
+Data Transformation
+    ↓
+Data Processing
+    ↓
+Business Report
+```
+
+Students should prioritize:
+
+* Clean code
+* Reusable functions
+* Input validation
+* Consistent formatting
+* Readability
+* Error handling
+* Maintainability
+
+---
+
+# 28. Final Challenge
+
+After completing the assignment, answer the following questions:
+
+1. Why is string cleaning important in real-world applications?
+2. What problems can inconsistent capitalization cause?
+3. Why should email addresses normally be normalized before comparison?
+4. Why should validation happen before storing customer data?
+5. What is the difference between `strip()` and `replace()`?
+6. What is the difference between `split()` and `join()`?
+7. When would you use string slicing?
+8. Why should string-processing logic be placed inside functions?
+9. What problems could occur if customer records contain missing fields?
+10. Why is sensitive information masked in reports?
+11. What would you change if the company had 10 million customer records?
+12. Which parts of this application would you redesign for production use?
+
+---
+
+## Submission Standard
+
+Your submission should demonstrate that you can take **messy real-world text data and convert it into clean, validated, structured information using Python**.
+
+The final project should be written as if it were being submitted to a software development team for code review.
